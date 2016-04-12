@@ -150,7 +150,9 @@ static NSString * AFQueryStringFromParameters(NSDictionary *parameters) {
     for (AFQueryStringPair *pair in AFQueryStringPairsFromDictionary(parameters)) {
         [mutablePairs addObject:[pair URLEncodedStringValue]];
     }
-
+    if (mutablePairs.count == 0) {
+        return nil;
+    }
     return [mutablePairs componentsJoinedByString:@"&"];
 }
 
